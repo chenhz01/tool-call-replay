@@ -2,6 +2,8 @@
 
 tool-call-replay is a single-process, zero-network CLI that records an agent's tool-call sequence into a JSON snapshot and deterministically replays it later — mocking tool signatures or re-executing calls — to report per-call side-effect diffs. Use it when your agent's tool surface keeps changing and you want drift caught before a rerun, not after.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Agent tool calls are the part of an LLM pipeline where silent breakage concentrates: a tool is renamed, a parameter loses a default, a refactor changes a return shape, and every downstream trace recorded against the old surface is now a lie. Re-running the full agent to find out is slow, non-deterministic, and may trigger real side effects. What is missing is a way to take one recorded call sequence and cheaply ask: *do today's tools still accept these arguments and return these results?*
